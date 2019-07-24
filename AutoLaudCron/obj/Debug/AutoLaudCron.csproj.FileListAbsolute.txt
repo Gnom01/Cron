@@ -1,0 +1,7 @@
+C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\bin\Debug\AutoLaudCron.exe.config
+C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\bin\Debug\AutoLaudCron.exe
+C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\bin\Debug\AutoLaudCron.pdb
+C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\obj\Debug\AutoLaudCron.csprojAssemblyReference.cache
+C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\obj\Debug\AutoLaudCron.csproj.CoreCompileInputs.cache
+C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\obj\Debug\AutoLaudCron.exe
+C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\obj\Debug\AutoLaudCron.pdb
