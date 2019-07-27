@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace AutoLaudCron
 {
@@ -15,70 +16,72 @@ namespace AutoLaudCron
         private string ButyAllegro { get; set; }
         private string ModaPtakAllegro { get; set; }
         startLoaud startLoaud = new startLoaud();
-
-         ///integration KUPBUTY///
+        
+        ///integration KUPBUTY///
         public string ButyKupAllHTTP()
         {
-           ButyKupAll = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdkupbutyxmlimport/cron.php?update=1");
-            if(ButyKupAll == "\"all\"")
-            {
-                Console.WriteLine("Kup buty wszystko ładue");
-            }
+            
+            ButyKupAll = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdkupbutyxmlimport/cron.php?update=1");
+            //if(ButyKupAll == "\"all\"")
+            //{
+            //    Console.WriteLine("Kup buty wszystko ładue");
+
+            //}
             return ButyKupAll;
         }
 
         public string ButyKupAjaksHTTP()
         {
             ButyKupAjaks = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdkupbutyxmlimport/cron.php?ajax_import=-2");
-            if (ButyKupAjaks == "")
-            {
-                Console.WriteLine("Kup buty AJAKS ładue");
-            }
+            //if (ButyKupAjaks == "")
+            //{
+            //    Console.WriteLine("Kup buty AJAKS ładue");
+            //}
             return ButyKupAjaks;
         }
 
         public string ButyKupFst5MinHTTP()
         {
             ButyKupFst5Min = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdkupbutyxmlimport/cron.php?update=1&fast_update=1");
-            if (ButyKupFst5Min == "")
-            {
-                Console.WriteLine("Kup buty AJAKS ładue");
-            }
+            //if (ButyKupFst5Min != null)//namber
+            //{
+            //    Console.WriteLine("Kup buty Fst 5 min ładue");
+            //}
             return ButyKupFst5Min;
         }
 
         ///integration CZASNABUTY///
         public string CzasNaButyAllHTTP()
         {
-                ButyCzasAll = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdczasnabutyxmlimport/cron.php?update=1");
-            if (ButyCzasAll == "\"all\"")
-            {
-                Console.WriteLine("Czas na buty wszystko ładue ALL");
-            }
+            ButyCzasAll = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdczasnabutyxmlimport/cron.php?update=1");
+            //if (ButyCzasAll == "\"all\"")
+            //{
+            //    Console.WriteLine("Czas na buty wszystko ładue ALL");
+            //}
             return ButyCzasAll;
         }
 
         public string CzasNaButyAjaksHTTP()
         {
-            ButyCzasAjaks = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdczasnabutyxmlimport/cron.php?update=1");
-            if (ButyCzasAjaks == "")
-            {
-                Console.WriteLine("Czas na buty Ajaks ładue");
-            }
-            else
-            {
+            ButyCzasAjaks = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdczasnabutyxmlimport/cron.php?ajax_import=-2");
+            //if (ButyCzasAjaks == "")
+            //{
+            //    Console.WriteLine("Czas na buty Ajaks ładue");
+            //}
+            //else
+            //{
 
-            }
+            //}
             return ButyCzasAjaks;
         }
 
         public string CzasNaButyFst5MinHTTP()
         {
             ButyCzasFst5Min = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdczasnabutyxmlimport/cron.php?update=1&fast_update=1");
-            if (ButyCzasFst5Min == "")
-            {
-                Console.WriteLine("Czas na buty Fst 5 Min");
-            }
+            //if (ButyCzasFst5Min == "")
+            //{
+            //    Console.WriteLine("Czas na buty Fst 5 Min");
+            //}
             return ButyCzasFst5Min;
         }
 
@@ -86,20 +89,20 @@ namespace AutoLaudCron
         public string ModaPtakFullHTTP()
         {
             ModaPtakFull = startLoaud.GetRequest(@"https://multibrend.pl/modules/x13import/cron.php");
-            if(true)
-            {
+            //if(true)
+            //{
 
-            }
+            //}
             return ModaPtakFull;
         }
 
         public string ModaPtakUpdate5MinHTTP()
         {
             ModaPtakUpdate = startLoaud.GetRequest(@"https://multibrend.pl/modules/x13import/update.php");
-            if (true)
-            {
+            //if (true)
+            //{
 
-            }
+            //}
             return ModaPtakUpdate;
         }
 

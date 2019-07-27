@@ -7,26 +7,26 @@ namespace AutoLaudCron
         public void OnTimedEvent()
         {
             httpWWWadress httpWWWadress = new httpWWWadress();
+            ConnectionBD connection = new ConnectionBD();
             int timeMinute10 = 0;
             int timeHour = 0;
             timeHour = DateTime.Now.Hour;
             timeMinute10 = DateTime.Now.Minute;
-            if(timeMinute10 == 00 || timeMinute10 == 10 || timeMinute10 == 20 || timeMinute10 == 30 || timeMinute10 == 40 || timeMinute10 == 50)
+            if(timeMinute10 == 02 || 
+               timeMinute10 == 11 || 
+               timeMinute10 == 20 || 
+               timeMinute10 == 30 || 
+               timeMinute10 == 40 || 
+               timeMinute10 == 50)
             {
-                httpWWWadress.ButyKupFst5MinHTTP();
-                httpWWWadress.CzasNaButyFst5MinHTTP();
-                httpWWWadress.ModaPtakUpdate5MinHTTP();
-                httpWWWadress.AllegroStartCronPtak();
-                httpWWWadress.AllegroStartCronButy();
+                connection.SendInfoBD5minCron();
             }
-            if(timeHour == 22 || timeHour == 03|| timeHour == 06 || timeHour == 14)
+            if ((timeHour == 22 && timeMinute10 == 00) || 
+                (timeHour == 10 && timeMinute10 == 00) || 
+                (timeHour == 12 && timeMinute10 == 00) || 
+                (timeHour == 14 && timeMinute10 == 00))
             {
-                httpWWWadress.ButyKupAjaksHTTP();
-                httpWWWadress.ButyKupAllHTTP();
-                httpWWWadress.CzasNaButyAjaksHTTP();
-                httpWWWadress.CzasNaButyAllHTTP();
-                httpWWWadress.ModaPtakFullHTTP();
-
+                connection.SendInfoBDFullCron();
             }
         }
     }

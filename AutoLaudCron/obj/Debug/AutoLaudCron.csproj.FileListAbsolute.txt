@@ -5,3 +5,10 @@ C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\obj\Debug\AutoLaudCron
 C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\obj\Debug\AutoLaudCron.csproj.CoreCompileInputs.cache
 C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\obj\Debug\AutoLaudCron.exe
 C:\Users\gnom-mini\source\repos\AutoLaudCron\AutoLaudCron\obj\Debug\AutoLaudCron.pdb
+C:\git\crone\AutoLaudCron\bin\Debug\AutoLaudCron.exe.config
+C:\git\crone\AutoLaudCron\bin\Debug\AutoLaudCron.exe
+C:\git\crone\AutoLaudCron\bin\Debug\AutoLaudCron.pdb
+C:\git\crone\AutoLaudCron\obj\Debug\AutoLaudCron.csprojAssemblyReference.cache
+C:\git\crone\AutoLaudCron\obj\Debug\AutoLaudCron.csproj.CoreCompileInputs.cache
+C:\git\crone\AutoLaudCron\obj\Debug\AutoLaudCron.exe
+C:\git\crone\AutoLaudCron\obj\Debug\AutoLaudCron.pdb
