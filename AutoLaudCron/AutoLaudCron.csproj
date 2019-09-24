@@ -55,6 +55,7 @@
     <Compile Include="httpWWWadress.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sendMessegeEmail.cs" />
     <Compile Include="startLoaud.cs" />
     <Compile Include="TimeStart.cs" />
   </ItemGroup>

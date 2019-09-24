@@ -24,7 +24,5 @@ namespace AutoLaudCron
                 return webRequest.DownloadString(adresWww);
             }
         }
-
     }
-
 }

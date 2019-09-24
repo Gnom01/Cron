@@ -22,7 +22,6 @@ namespace AutoLaudCron
             while (true)
             {
                 timerStart.OnTimedEvent();
-         
             }
         }
     }

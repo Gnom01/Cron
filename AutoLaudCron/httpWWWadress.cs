@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System.Text.RegularExpressions;
 
 namespace AutoLaudCron
 {
@@ -16,37 +15,37 @@ namespace AutoLaudCron
         private string ButyAllegro { get; set; }
         private string ModaPtakAllegro { get; set; }
         startLoaud startLoaud = new startLoaud();
-        
+        sendMessegeEmail sendMessegeEmail = new sendMessegeEmail();
+
         ///integration KUPBUTY///
         public string ButyKupAllHTTP()
         {
-            
             ButyKupAll = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdkupbutyxmlimport/cron.php?update=1");
-            //if(ButyKupAll == "\"all\"")
-            //{
-            //    Console.WriteLine("Kup buty wszystko ładue");
-
-            //}
+            if (ButyKupAll != "\"all\"")
+            {
+                sendMessegeEmail.startSendMessegeEmail("ButyKupAll", ButyKupAll);
+            }
             return ButyKupAll;
         }
-
         public string ButyKupAjaksHTTP()
         {
             ButyKupAjaks = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdkupbutyxmlimport/cron.php?ajax_import=-2");
-            //if (ButyKupAjaks == "")
-            //{
-            //    Console.WriteLine("Kup buty AJAKS ładue");
-            //}
+            if (ButyKupAjaks != "")
+            {
+                sendMessegeEmail.startSendMessegeEmail("ButyKupAjaks", ButyKupAjaks);
+            }
             return ButyKupAjaks;
         }
 
         public string ButyKupFst5MinHTTP()
         {
             ButyKupFst5Min = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdkupbutyxmlimport/cron.php?update=1&fast_update=1");
-            //if (ButyKupFst5Min != null)//namber
-            //{
-            //    Console.WriteLine("Kup buty Fst 5 min ładue");
-            //}
+            int num;
+            bool isNum = int.TryParse(ButyKupFst5Min, out num);
+            if (!isNum)//namber
+            {
+                sendMessegeEmail.startSendMessegeEmail("ButyKupFst5Min", ButyKupFst5Min);
+            }
             return ButyKupFst5Min;
         }
 
@@ -54,34 +53,32 @@ namespace AutoLaudCron
         public string CzasNaButyAllHTTP()
         {
             ButyCzasAll = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdczasnabutyxmlimport/cron.php?update=1");
-            //if (ButyCzasAll == "\"all\"")
-            //{
-            //    Console.WriteLine("Czas na buty wszystko ładue ALL");
-            //}
+            if (ButyCzasAll != "\"all\"")
+            {
+                sendMessegeEmail.startSendMessegeEmail("ButyCzasAll", ButyCzasAll);
+            }
             return ButyCzasAll;
         }
 
         public string CzasNaButyAjaksHTTP()
         {
             ButyCzasAjaks = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdczasnabutyxmlimport/cron.php?ajax_import=-2");
-            //if (ButyCzasAjaks == "")
-            //{
-            //    Console.WriteLine("Czas na buty Ajaks ładue");
-            //}
-            //else
-            //{
-
-            //}
+            if (ButyCzasAjaks != "")
+            {
+                sendMessegeEmail.startSendMessegeEmail("ButyCzasAjaks", ButyCzasAjaks);
+            }
             return ButyCzasAjaks;
         }
 
         public string CzasNaButyFst5MinHTTP()
         {
             ButyCzasFst5Min = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/pdczasnabutyxmlimport/cron.php?update=1&fast_update=1");
-            //if (ButyCzasFst5Min == "")
-            //{
-            //    Console.WriteLine("Czas na buty Fst 5 Min");
-            //}
+            int num;
+            bool isNum = int.TryParse(ButyCzasFst5Min, out num);
+            if (!isNum)//namber
+            {
+                sendMessegeEmail.startSendMessegeEmail("ButyCzasFst5Min", ButyCzasFst5Min);
+            }
             return ButyCzasFst5Min;
         }
 
@@ -89,20 +86,30 @@ namespace AutoLaudCron
         public string ModaPtakFullHTTP()
         {
             ModaPtakFull = startLoaud.GetRequest(@"https://multibrend.pl/modules/x13import/cron.php");
-            //if(true)
-            //{
-
-            //}
+            if (ModaPtakFull == "MAX ONE INSTANCE!" || ModaPtakFull == null)
+            {
+                sendMessegeEmail.startSendMessegeEmail("ModaPtakFull", ModaPtakFull);
+            }
             return ModaPtakFull;
         }
 
         public string ModaPtakUpdate5MinHTTP()
         {
             ModaPtakUpdate = startLoaud.GetRequest(@"https://multibrend.pl/modules/x13import/update.php");
-            //if (true)
-            //{
+            string messegTrue1 = ModaPtakUpdate;
+            string messegTrue = @"SCRIPT COMPLETE - EXECUTE TIME: (.*?)";
+            string[] result = Regex.Replace(messegTrue1, @" \s{1,10}", "|", RegexOptions.IgnorePatternWhitespace).Split('|');
+            string[] result2 = Regex.Replace(messegTrue, @" \s{1,10}", "|", RegexOptions.IgnorePatternWhitespace).Split('|');
 
-            //}
+            if (result[0] != result2[0] || 
+                result[1] != result2[1] || 
+                result[2] != result2[2] || 
+                result[3] != result2[3] ||
+                result[4] != result2[4] ||
+                result[5] != result2[5] )
+            {
+                sendMessegeEmail.startSendMessegeEmail("ModaPtakUpdate", ModaPtakUpdate);
+            }
             return ModaPtakUpdate;
         }
 
@@ -110,13 +117,37 @@ namespace AutoLaudCron
         public string AllegroStartCronPtak()
         {
             ModaPtakAllegro = startLoaud.GetRequest(@"https://multibrend.pl/modules/x13allegro/sync.php?token=Nj60UDQf");
-            return ModaPtakAllegro;
+            string messegTrue1 = ModaPtakAllegro;
+            string messegTrue = "Konto (ID: 1) yana_yol";
+            string[] result = Regex.Replace(messegTrue1, @" \s{1,10}", "|", RegexOptions.IgnorePatternWhitespace).Split('|');
+            string[] result2 = Regex.Replace(messegTrue, @" \s{1,10}", " | ", RegexOptions.IgnorePatternWhitespace).Split('|');
+
+            if (result[0] != result2[0] ||
+                result[1] != result2[1] ||
+                result[2] != result2[2] ||
+                result[3] != result2[3] ) 
+            {
+                sendMessegeEmail.startSendMessegeEmail("ModaPtakAllegro", ModaPtakAllegro);
+            }
+                return ModaPtakAllegro;
         }
 
         ///integration ALLEGRO BUTY///
         public string AllegroStartCronButy()
         {
             ButyAllegro = startLoaud.GetRequest(@"https://www.butyesklep.pl/sklep/modules/x13allegro/sync.php?token=itYak4S4");
+            string messegTrue1 = ButyAllegro;
+            string messegTrue = "Konto (ID: 1) yana_yol";
+            string[] result = Regex.Replace(messegTrue1, @" \s{1,10}", "|", RegexOptions.IgnorePatternWhitespace).Split('|');
+            string[] result2 = Regex.Replace(messegTrue, @" \s{1,10}", " | ", RegexOptions.IgnorePatternWhitespace).Split('|');
+
+            if (result[0] != result2[0] ||
+                result[1] != result2[1] ||
+                result[2] != result2[2] ||
+                result[3] != result2[3])
+            {
+                sendMessegeEmail.startSendMessegeEmail("ButyAllegro", ButyAllegro);
+            }
             return  ButyAllegro;
         }
     }
